@@ -44,7 +44,7 @@ const config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Wunderbyte Docs',
+      title: 'Docs',
       logo: {
         alt: 'Wunderbyte Logo',
         src: 'img/logo.svg',

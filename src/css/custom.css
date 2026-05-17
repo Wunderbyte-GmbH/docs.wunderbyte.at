@@ -6,25 +6,86 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #263683;
+  --ifm-color-primary-dark: #223176;
+  --ifm-color-primary-darker: #202e6f;
+  --ifm-color-primary-darkest: #1a265b;
+  --ifm-color-primary-light: #314493;
+  --ifm-color-primary-lighter: #36499a;
+  --ifm-color-primary-lightest: #4a5eab;
+  --ifm-color-secondary: #ec8600;
+  --ifm-background-color: #ffffff;
+  --ifm-font-color-base: #1c1c1b;
+  --ifm-navbar-background-color: #263683;
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-navbar-link-hover-color: #ffffff;
+  --ifm-footer-background-color: #1c1c1b;
+  --ifm-footer-color: #ffffff;
+  --ifm-footer-link-color: #ffffff;
+  --ifm-footer-title-color: #ffffff;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #5f72c0;
+  --ifm-color-primary-dark: #4e63b7;
+  --ifm-color-primary-darker: #465bb3;
+  --ifm-color-primary-darkest: #384995;
+  --ifm-color-primary-light: #7081c9;
+  --ifm-color-primary-lighter: #7888cc;
+  --ifm-color-primary-lightest: #92a0d5;
+  --ifm-background-color: #1c1c1b;
+  --ifm-navbar-background-color: #263683;
+  --ifm-footer-background-color: #151514;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+  box-shadow: none;
+}
+
+.navbar__brand {
+  gap: 0.75rem;
+}
+
+.navbar__logo img {
+  height: 2rem;
+  width: auto;
+}
+
+.navbar__title,
+.footer a:hover,
+.footer a:focus {
+  color: #ffffff;
+}
+
+.hero--primary {
+  --ifm-hero-background-color: #263683;
+  --ifm-hero-text-color: #ffffff;
+}
+
+.button.button--secondary {
+  background-color: #ec8600;
+  border-color: #ec8600;
+  color: #1c1c1b;
+}
+
+.button.button--secondary:hover,
+.button.button--secondary:focus {
+  background-color: #d97b00;
+  border-color: #d97b00;
+  color: #1c1c1b;
+}
+
+.button.button--outline.button--secondary {
+  background-color: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.button.button--outline.button--secondary:hover,
+.button.button--outline.button--secondary:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
 }
