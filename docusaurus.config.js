@@ -4,7 +4,7 @@ const config = {
   title: 'Wunderbyte Docs',
   url: 'https://docs.wunderbyte.at',
   tagline: 'Documentation for Wunderbyte Moodle plugins and projects',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   future: {
     v4: true,
