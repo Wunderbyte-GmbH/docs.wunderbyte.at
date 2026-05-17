@@ -1,71 +1,49 @@
 ---
-title: Booking full reference
+title: Booking guides
 slug: /mod_booking/reference
+sidebar_position: 1
 ---
 
-# Booking full reference
+# Booking guides
 
-Welcome to the complete imported reference for **mod_booking** based on the `docs/` folder from the `MOODLE_405_DEV` branch of `Wunderbyte-GmbH/moodle-mod_booking`.
+`moodle-mod_booking` is a feature-rich Moodle activity for managing bookable options such as workshops, appointments, course dates, recurring sessions, and bundled training offers.
 
-This section complements the shorter overview pages in the main Booking docs and preserves the full source documentation structure.
+These pages summarize the source documentation into shorter operational guides for administrators, teachers, organizers, and site owners.
 
-## Quick-start guide
+## Quick start for administrators
 
-| I want to... | Go to... |
+| Goal | Start here |
 | --- | --- |
-| Send a reminder email before a course starts | [Booking rules](./booking_rules/README.md) |
-| Restrict who can book an option | [Booking conditions](./booking_conditions/README.md) |
-| Create or configure a booking option | [Booking option form](./booking-option/README.md) |
-| Customise notification emails with dynamic text | [Placeholders](./placeholders/README.md) |
-| Embed a booking list on a Moodle page | [Shortcodes](./shortcodes/README.md) |
-| Set up user roles and permissions | [Capabilities](./capabilities/README.md) |
-| Import booking options in bulk | [CSV Import User Guide](./CSV_IMPORT_USER_GUIDE.md) |
-| Run a time-limited booking campaign | [Campaigns](./campaigns/README.md) |
-| Let participants choose add-ons or time slots | [Sub-bookings](./subbookings/README.md) |
-| Trigger actions automatically when someone books | [Actions after booking](./actions_after_booking/README.md) |
-| Understand scheduled background tasks | [Scheduled tasks](./scheduled_tasks/README.md) |
-| Allow external links to bypass profile-field restrictions | [Override user field](./override_user_field/README.md) |
-| Build or install a booking extension | [Booking extensions](./booking_extensions/README.md) |
+| Install or update Booking safely | [Installation and updates](/docs/mod_booking/reference/installation-and-updates) |
+| Understand the booking option form | [Creating booking activities](/docs/mod_booking/reference/creating-booking-activities) |
+| Configure option fields, confirmation, and availability | [Managing booking options](/docs/mod_booking/reference/managing-options) |
+| Manage participants and staff permissions | [Managing participants](/docs/mod_booking/reference/managing-participants) |
+| Set up rules, actions, campaigns, or sub-bookings | [Integrations and automation](/docs/mod_booking/reference/integrations-and-automation) |
+| Import or update options in bulk | [CSV import and bulk management](/docs/mod_booking/reference/csv-import-and-bulk-management) |
+| Support teachers and organizers | [Teacher and organizer tools](/docs/mod_booking/reference/teacher-and-organizer-tools) |
+| Understand the learner journey | [Participant experience](/docs/mod_booking/reference/participant-experience) |
+| Review operational controls and scheduled tasks | [Administrator reference](/docs/mod_booking/reference/administrator-reference) |
 
-## Documentation sections
+## Key concepts
 
-### User and teacher guides
+### Booking activity vs. booking option
 
-| Section | Description |
-| --- | --- |
-| [booking-option](./booking-option/README.md) | Every field in the booking option form: general settings, dates, teachers, availability, price, linked course, advanced settings, and confirmation workflow |
-| [booking_conditions](./booking_conditions/README.md) | Availability conditions that control who can book and when |
-| [booking_rules](./booking_rules/README.md) | Rule-based automation with triggers, conditions, actions, templates, and examples |
-| [placeholders](./placeholders/README.md) | Reference of `{token}` placeholders for messages and texts |
-| [shortcodes](./shortcodes/README.md) | Moodle shortcodes for embedding Booking-related lists and tools |
-| [subbookings](./subbookings/README.md) | Additional items, additional persons, and time-slot selection |
-| [campaigns](./campaigns/README.md) | Time-limited campaigns that modify booking behavior |
-| [actions_after_booking](./actions_after_booking/README.md) | Immediate post-booking actions such as cancel, book other options, REST calls, and profile-field updates |
+- A **Booking activity** is the Moodle activity added to a course.
+- A **booking option** is one concrete item users can book inside that activity.
 
-### Administrator guides
+One Booking activity can contain many options, each with its own title, dates, capacity, availability restrictions, notifications, and automation.
 
-| Section | Description |
-| --- | --- |
-| [capabilities](./capabilities/README.md) | Moodle capabilities, default role assignments, and sensitive permissions |
-| [scheduled_tasks](./scheduled_tasks/README.md) | Registered scheduled tasks and their operational behavior |
-| [override_user_field](./override_user_field/README.md) | Access links for externals who need to bypass profile-field restrictions |
-| [booking_extensions](./booking_extensions/README.md) | Booking extension subplugins, installation, and extension points |
-| [CSV_IMPORT_USER_GUIDE.md](./CSV_IMPORT_USER_GUIDE.md) | Bulk create or update options via CSV |
-| [certificates_de.md](./certificates_de.md) | German certificate-related Booking documentation from the source tree |
+### Rules vs. actions after booking
 
-### Developer guides
+The source docs distinguish two automation models:
 
-| Section | Description |
-| --- | --- |
-| [developer-guides](./developer-guides/index.mdx) | Architecture and APIs for extending rules, conditions, campaigns, placeholders, sub-bookings, and extensions |
+- **Booking rules** run on a schedule or on Moodle events and usually send or trigger follow-up actions.
+- **Actions after booking** run immediately when a booking answer is created, confirmed, or deleted.
 
-### Examples
+### Free and PRO scope
 
-| Section | Description |
-| --- | --- |
-| [examples](./examples/index.mdx) | The source CSV example configurations collected into one reference page |
+Several advanced features documented in the source branch are explicitly marked as **PRO**, including many booking conditions, sub-bookings, campaigns, and actions after booking.
 
-## Notes
+## Full source reference
 
-- Screenshot placeholder lines from the source docs were removed where the referenced `pix/` files were not present in the source tree.
-- The imported pages preserve the original source structure as closely as possible so future syncs from `MOODLE_405_DEV` stay straightforward.
+The complete source-structured reference now lives at the top level under [Booking reference](/docs/mod_booking).
