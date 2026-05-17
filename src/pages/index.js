@@ -18,12 +18,6 @@ const productCards = [
       'Documentation for planning data structures, views, workflows, and permissions in Datalynx.',
     to: '/docs/mod_datalynx',
   },
-  {
-    title: 'Built for site owners',
-    description:
-      'The first documentation pass is optimized for Moodle admins and site owners who need to configure, maintain, and roll out plugins.',
-    to: '/docs/',
-  },
 ];
 
 function HomepageHeader() {
