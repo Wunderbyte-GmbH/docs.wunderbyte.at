@@ -1,0 +1,58 @@
+---
+title: Creating booking activities
+sidebar_position: 3
+---
+
+# Creating booking activities
+
+The Booking source docs put most of the detailed configuration at the **booking option** level. For administrators, that means the most important design decision is how you structure Booking activities and which staff can create or edit options inside them.
+
+## Activity structure
+
+Use one Booking activity when the options belong to the same operational context, for example:
+
+- one training catalogue for a department
+- one recurring workshop series
+- one event family with multiple sessions or variants
+
+Inside that Booking activity, each **booking option** represents one concrete item users can book.
+
+## Recommended setup flow
+
+1. Add a **Booking** activity to the course.
+2. Configure the activity-level defaults your site needs.
+3. Decide who may create, edit, approve, communicate, or bulk-manage options.
+4. Add the first booking option and review which option-form sections are visible.
+5. Reuse that option pattern for the rest of the activity.
+
+## What the option form contains
+
+According to the source docs, the booking option form is organized around these sections:
+
+| Section | Typical content |
+| --- | --- |
+| General settings | title, description, location, visibility, capacity |
+| Dates | session dates and schedules |
+| Teachers and contact | assigned teachers and responsible contact |
+| Availability conditions | booking windows and restriction rules |
+| Price | pricing and price-category behavior |
+| Linked Moodle course | automatic enrollment target |
+| Advanced options | cancellation, texts, attachments, return URLs, rebooking |
+| Demand confirmation | manual approval workflow |
+
+## Form visibility matters
+
+The source docs note that administrators can control which sections appear via **option form configuration**. This is one of the most important rollout tools for large Moodle sites:
+
+- show the full form to managers
+- give teachers a reduced form
+- expose only the fields that fit your support model
+
+## Governance guidance
+
+If many teachers will work with Booking:
+
+- define naming conventions for options and identifiers
+- standardize how locations, institutions, and titles are entered
+- decide whether all staff may use advanced settings like return URLs or multiple-booking rules
+- document when to use confirmation workflows, campaigns, or rules instead of manual handling

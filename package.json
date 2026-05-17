@@ -1,5 +1,5 @@
 {
-  "name": "wunderdocs",
+  "name": "docs.wunderbyte.at",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
+    "deploy:sftp": "bash ./scripts/deploy-sftp.sh",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",

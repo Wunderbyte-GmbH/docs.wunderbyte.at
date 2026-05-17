@@ -1,26 +1,45 @@
-# Website
+# docs.wunderbyte.at
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This repository contains the Docusaurus source for `docs.wunderbyte.at`, the Wunderbyte documentation site for Moodle plugins and related projects.
 
-## Installation
+## Local development
+
 ```bash
-npm install
+npm ci
+npm run start
 ```
 
-## Local Development
-```bash
-npm start
-```
+## Validation
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-## Build
 ```bash
 npm run build
+npm run typecheck
 ```
-
-This command generates static content into the `build` directory.
 
 ## Deployment
 
-Deployment happens automatically via GitHub Actions when you push to the `main` branch. The built site is deployed to `docs.wunderbyte.at`.
+Local deployment uploads the generated `build/` output to `dedi458.your-server.de` over SFTP:
+
+```bash
+npm run build
+npm run deploy:sftp
+```
+
+The deploy script uses:
+
+- `~/.sftp` line 2 for the password during local runs
+- `SFTP_PASSWORD` in CI
+
+Optional environment variables:
+
+- `SFTP_HOST` (default: `dedi458.your-server.de`)
+- `SFTP_PORT` (default: `22`)
+- `SFTP_USER` (default: `wunder_4`)
+- `SFTP_REMOTE_DIR` (default: `/`)
+
+## GitHub Actions
+
+- `.github/workflows/ci.yml` runs the build
+- `.github/workflows/deploy.yml` deploys on pushes to `main` and on manual dispatch
+
+To enable automated deployment in GitHub Actions, add the repository secret `WUNDERBYTE_SFTP_PASSWORD`.

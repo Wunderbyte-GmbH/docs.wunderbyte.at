@@ -10,6 +10,10 @@
   overflow: hidden;
 }
 
+.mainContent {
+  padding: 3rem 0 4rem;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
@@ -20,4 +24,57 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sectionIntro {
+  margin-bottom: 2rem;
+}
+
+.sectionIntro p {
+  max-width: 52rem;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  display: block;
+  color: inherit;
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-decoration: none;
+  box-shadow: var(--ifm-global-shadow-lw);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  color: inherit;
+  text-decoration: none;
+  transform: translateY(-2px);
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 996px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
 }

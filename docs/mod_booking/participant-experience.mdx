@@ -1,0 +1,65 @@
+---
+title: Participant experience
+sidebar_position: 9
+---
+
+# Participant experience
+
+Even in an admin-first documentation set, the participant journey matters because many Booking settings directly change what users see.
+
+## What participants encounter
+
+The source docs document the following user-facing stages:
+
+1. the option is shown or hidden depending on visibility and conditions
+2. the user sees booking-window messaging if booking is not yet open or already closed
+3. if they are allowed to proceed, they can book directly or join a waiting list
+4. if confirmation is required, they move into a pending state
+5. if sub-bookings exist, they may complete add-ons or choose time slots
+6. after booking, they see status-specific texts and may receive customized mail
+
+## What changes the experience
+
+### Visibility and access
+
+Participants can be affected by:
+
+- `invisible`
+- `disablebookingusers`
+- booking opening and closing times
+- booking conditions such as cohort, course, profile field, or previous booking
+
+### Waiting list and confirmation
+
+The source docs describe three confirmation patterns:
+
+- immediate confirmation
+- all bookings require manual confirmation
+- only waiting-list users require confirmation
+
+### Status-dependent content
+
+The advanced option settings documented in the source branch let you show different content:
+
+- before booking
+- after booking but before completion
+- after completion
+
+### Messages and placeholders
+
+The source docs also document extensive placeholder support, including:
+
+- user fields such as `{firstname}` and `{email}`
+- option details such as `{title}`, `{location}`, and `{bookingdetails}`
+- links such as `{bookinglink}`, `{courselink}`, and `{bookingconfirmationlink}`
+- status and capacity values such as `{status}` and `{numberwaitinglist}`
+
+## Admin takeaway
+
+When users report confusion, the issue is often not just content. It can come from:
+
+1. conditions blocking the button
+2. confirmation settings changing the expected result
+3. custom texts not matching the real workflow
+4. hidden cancellation deadlines
+5. booking rules or actions changing what happens after submission

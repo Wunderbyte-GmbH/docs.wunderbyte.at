@@ -1,0 +1,55 @@
+---
+title: Teacher and organizer tools
+sidebar_position: 8
+---
+
+# Teacher and organizer tools
+
+The source docs make it clear that Booking can support both centralized administration and delegated teacher workflows. The important part is assigning the right capability set and option-form visibility.
+
+## Typical role model from the source docs
+
+The `capabilities/README.md` describes a practical ladder:
+
+| Role | Typical capabilities from the source docs |
+| --- | --- |
+| Student / authenticated user | view, choose, comment, view own flows |
+| Non-editing teacher | read responses, communicate, download checklists, update notes |
+| Editing teacher | create/edit own options, manage bookings, send messages, review substitutions |
+| Manager | full management including rules, approvals, reporting, and configuration |
+
+## Reduced forms and expert forms
+
+The source docs document several option-form variants:
+
+- `expertoptionform` for a full editing experience
+- five reduced form variants (`reducedoptionform1` to `reducedoptionform5`)
+
+This allows administrators to:
+
+- hide advanced settings from casual editors
+- expose only the fields a department actually uses
+- standardize which roles may work with pricing, conditions, or automation
+
+## Teacher-facing workflows worth defining
+
+Before enabling teacher ownership, decide who may:
+
+- create options
+- edit all option fields vs. only their own options
+- manage dates and session teachers
+- communicate with participants
+- move users between booking states
+- approve pending bookings
+- use shortcodes such as approval or supervisor lists
+
+## Contact and teacher information
+
+The source docs also document dedicated teacher and responsible-contact placeholder fields such as:
+
+- `{teacher}` / `{teachers}`
+- `{firstnamerelated}`
+- `{lastnamerelated}`
+- `{emailrelated}`
+
+That makes it easier to build standardized messages without forcing the teacher and responsible contact to be the same person.

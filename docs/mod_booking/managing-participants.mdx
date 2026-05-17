@@ -1,0 +1,74 @@
+---
+title: Managing participants
+sidebar_position: 5
+---
+
+# Managing participants
+
+The Booking source docs spread participant management across capabilities, confirmation workflows, CSV import, and option configuration. This page collects the main operational parts.
+
+## Common participant states
+
+From the source docs, the administrator-visible flow commonly involves these statuses:
+
+- **booked** for confirmed registrations
+- **pending** when confirmation is required
+- **waiting list** when capacity is full and overflow is allowed
+- **notification list** for users who only want to be informed when a place opens
+
+## Core participant tasks
+
+Administrators and support staff typically need to:
+
+- review who booked and who is waiting
+- confirm or reject pending bookings
+- cancel a user's booking on their behalf
+- move people through waiting-list workflows
+- export responses and attendance-related data
+- communicate with participants or teachers
+
+## Capabilities that matter most
+
+The source `capabilities/README.md` highlights these permissions for participant operations:
+
+| Capability | Purpose |
+| --- | --- |
+| `mod/booking:readresponses` | see who booked an option |
+| `mod/booking:deleteresponses` | remove bookings on behalf of users |
+| `mod/booking:downloadresponses` | export participant lists |
+| `mod/booking:subscribeusers` | enroll/book other users into an option |
+| `mod/booking:bookforothers` | run the booking flow for another user |
+| `mod/booking:managebookedusers` | manage the participant list and statuses |
+| `mod/booking:communicate` / `cansendmessages` | send messages from Booking |
+| `mod/booking:seealllisttoapprove` / `alwayscanapprove` | work with approval queues |
+
+## Confirmation workflows
+
+When `waitforconfirmation` is enabled on an option:
+
+1. the booking answer is stored as pending
+2. a manager or teacher reviews it
+3. the participant is either confirmed or rejected
+
+The source docs also distinguish a mixed mode where only waiting-list bookings need confirmation.
+
+## Direct participant booking by staff
+
+The CSV import guide documents a bulk path for participant assignment using:
+
+- `useremail` or `username`
+- `timebooked`
+- `completed`
+
+This makes Booking useful not only for self-service registration, but also for centrally managed rosters and imported attendance flows.
+
+## Support checklist
+
+When participant behavior looks wrong, check:
+
+1. option capacity and waiting-list values
+2. confirmation mode
+3. booking opening and closing times
+4. active booking conditions
+5. staff capabilities for the current role
+6. whether rule skipping or booking actions alter the expected flow

@@ -1,0 +1,94 @@
+---
+title: Integrations and automation
+sidebar_position: 6
+---
+
+# Integrations and automation
+
+The source branch documents several layers of Booking automation. The key administrator distinction is that not all automation happens in the same place.
+
+## Booking rules
+
+The `booking_rules/` docs describe rules as a three-part model:
+
+```text
+[trigger] -> [condition] -> [action]
+```
+
+In other words:
+
+- **when** should something happen
+- **who** should it affect
+- **what** should the system do
+
+### Where rules are managed
+
+- globally in site administration
+- per Booking instance in PRO setups
+
+### What rules are used for
+
+- reminder emails before start dates
+- confirmation or waiting-list emails
+- update notifications
+- follow-up communication after payment or completion
+
+The source docs also note that options can selectively skip or opt into rules via `skipbookingrules` and `skipbookingrulesmode`.
+
+## Actions after booking
+
+The `actions_after_booking/` docs describe a second automation model that runs **immediately** after booking events.
+
+### Source-documented action types
+
+| Action type | What it does |
+| --- | --- |
+| Cancel booking | removes the parent booking after a trigger |
+| Book other options | automatically books selected sibling options |
+| Execute REST script | calls an external endpoint and stores the response |
+| Set user profile field | updates a custom profile field on confirmation |
+
+The source docs describe these as **PRO** features and note that multiple actions run in sequence until an action aborts further execution.
+
+## Sub-bookings
+
+The `subbookings/` docs describe optional add-ons in the booking flow:
+
+- additional items
+- additional persons
+- time-slot selection
+
+These are attached to booking options and can either be optional or blocking prerequisites.
+
+## Campaigns
+
+The `campaigns/` docs add a separate global layer for time-limited changes:
+
+- block booking for selected options
+- apply price factors
+- adjust capacity factors
+
+Campaigns are evaluated against booking custom fields and optional user conditions, and they do not permanently rewrite the option data.
+
+## Shortcodes and embedded views
+
+The `shortcodes/README.md` source file documents a set of Moodle shortcodes that expose Booking data elsewhere in the platform, including:
+
+- all booking options
+- options from one booking activity
+- the current user's own bookings
+- approval lists
+- supervisor/team views
+- bulk operations
+
+## Practical architecture
+
+Use these layers intentionally:
+
+| Need | Prefer |
+| --- | --- |
+| scheduled or event-based notification logic | booking rules |
+| immediate post-booking side effects | actions after booking |
+| optional add-ons in the booking flow | sub-bookings |
+| time-limited pricing or access campaigns | campaigns |
+| display Booking data on Moodle pages | shortcodes |

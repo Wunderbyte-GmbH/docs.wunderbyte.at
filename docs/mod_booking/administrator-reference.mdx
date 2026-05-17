@@ -1,0 +1,107 @@
+---
+title: Administrator reference
+sidebar_position: 10
+---
+
+# Administrator reference
+
+This page condenses the most operations-focused Booking docs from `MOODLE_405_DEV` that do not fit cleanly into a single end-user workflow.
+
+## Capability groups
+
+The source `capabilities/README.md` breaks Booking permissions into practical groups:
+
+- viewing and booking
+- option management
+- user and response management
+- communication
+- rating
+- booking rules and availability conditions
+- pricing and custom fields
+- teacher management
+- approvals
+- administration and reporting
+- performance/developer capabilities
+
+For most sites, the permissions that deserve the closest review are:
+
+- `mod/booking:updatebooking`
+- `mod/booking:editbookingrules`
+- `mod/booking:overrideboconditions`
+- `mod/booking:executebulkoperations`
+- `mod/booking:managebookedusers`
+- `mod/booking:seealllisttoapprove`
+
+## Scheduled tasks
+
+The source branch documents five recurring Booking tasks:
+
+| Task | Operational concern |
+| --- | --- |
+| `remove_activity_completion` | stale completion cleanup |
+| `enrol_bookedusers_tocourse` | delayed linked-course enrollment |
+| `send_reminder_mails` | legacy reminder pipeline |
+| `send_notification_mails` | notification-list mail batching |
+| `clean_booking_db` | housekeeping and orphan cleanup |
+
+## Shortcodes
+
+The `shortcodes/README.md` source file documents embedded displays for:
+
+- all booking options
+- options from a single Booking activity
+- the current user's own bookings
+- recommendation or field-of-study views
+- bulk operations
+- approval lists
+- supervisor-team views
+
+These rely on Moodle shortcode support and on the viewer holding the required capability.
+
+## Placeholders
+
+The source placeholder reference groups tokens into:
+
+- user fields
+- booking option fields
+- dates and times
+- links and URLs
+- teacher and contact fields
+- pricing and shopping cart fields
+- status and capacity fields
+- certificates and QR codes
+- custom fields and custom-form data
+
+This matters whenever you build rule emails, confirmation texts, poll URLs, or iCal descriptions.
+
+## Override links for externals
+
+The `override_user_field/README.md` source doc describes a special access-link feature that can temporarily bypass a user-profile-field restriction for one Booking instance.
+
+Important source-doc notes:
+
+- the bypass is instance-specific
+- it can be password-protected
+- it is intended for controlled external access
+- only supported field operators allow generated access links
+
+## Booking extensions
+
+The `booking_extensions/README.md` source doc explains that Booking extensions can:
+
+- add fields to the option form
+- add admin settings
+- add option-list actions
+- register Moodle events for rule triggers
+- implement custom confirmation flows
+- add content to option detail pages
+
+## When to use this page
+
+Use this reference when you are:
+
+1. defining a role model
+2. reviewing cron behavior
+3. building message templates
+4. embedding Booking data elsewhere in Moodle
+5. assessing whether you need a Booking extension or an external-access workaround

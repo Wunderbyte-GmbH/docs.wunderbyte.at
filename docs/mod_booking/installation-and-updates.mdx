@@ -1,0 +1,66 @@
+---
+title: Installation and updates
+sidebar_position: 2
+---
+
+# Installation and updates
+
+The source docs focus less on the mechanics of plugin installation and more on the operational checks administrators need after Booking is installed. This page brings those pieces together.
+
+## Install Booking
+
+1. Obtain the plugin package from the Moodle plugins directory or GitHub.
+2. Place the code in `mod/booking`.
+3. Run the Moodle upgrade from **Site administration > Notifications**.
+4. Review plugin settings before enabling the activity broadly.
+
+## Post-installation checks
+
+Based on the `MOODLE_405_DEV` docs, these are the first areas to review:
+
+- **Capabilities and roles** so students, teachers, managers, and approvers see only the workflows they should use
+- **Booking option form configuration** so editors only see the sections and fields they need
+- **Legacy mail templates vs. booking rules** so you do not run overlapping automation models by accident
+- **Linked course enrollment** if options should auto-enroll participants into Moodle courses
+- **Optional integrations** such as `local_entities`, `local_shortcodes`, or shopping-cart-related pricing placeholders
+
+## Scheduled tasks you should know
+
+The source branch documents five scheduled tasks registered by Booking:
+
+| Task | Default schedule | What it does |
+| --- | --- | --- |
+| `remove_activity_completion` | every minute | Cleans up stale completion records |
+| `enrol_bookedusers_tocourse` | every minute | Enrolls confirmed participants into linked courses once the start time is reached |
+| `send_reminder_mails` | hourly at minute 7 | Sends legacy reminder emails from instance settings |
+| `send_notification_mails` | daily at 07:30 | Notifies users on the notification list when capacity opens |
+| `clean_booking_db` | weekly on Sunday | Removes stale and orphaned Booking records |
+
+Manage or reschedule them in **Site administration > Server > Scheduled tasks**.
+
+## Mail automation choice
+
+The source docs call out an important distinction:
+
+- **Legacy reminder mails** depend on activity-level fields and the `send_reminder_mails` task.
+- **Booking rules** provide the newer rule-based automation model with triggers, conditions, actions, and templates.
+
+Decide early which model your site should use, especially if you want reusable templates or event-based automation.
+
+## Optional extensions and related plugins
+
+The Booking docs also reference optional extensions:
+
+- **Booking extensions** add custom fields, admin settings, option actions, custom confirmation workflows, or extra detail-page content.
+- **`local_entities`** can replace plain location/address fields with managed entity selection.
+- **Shortcodes** require the shortcode filter to be enabled in Moodle.
+
+## Update checklist
+
+Before a production upgrade:
+
+1. test the new version in staging
+2. re-check capabilities for editing, approvals, and automation
+3. verify scheduled tasks still match your operational expectations
+4. re-test linked-course enrollment, rules, and actions after booking
+5. confirm CSV import files still match the available columns in your version

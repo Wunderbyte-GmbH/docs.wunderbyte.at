@@ -1,0 +1,102 @@
+---
+title: CSV import and bulk management
+sidebar_position: 7
+---
+
+# CSV import and bulk management
+
+The `CSV_IMPORT_USER_GUIDE.md` in `MOODLE_405_DEV` is one of the most operationally useful admin docs in the Booking source tree. It documents how to create or update options in bulk.
+
+## How CSV import works
+
+Import from:
+
+**Booking activity > Settings > Import options from CSV**
+
+The importer shows a preview and result log. Rows with errors are skipped while valid rows are saved.
+
+## File format rules
+
+The source guide documents these CSV expectations:
+
+- UTF-8 encoding
+- comma or semicolon delimiter
+- header row required
+- one booking option per row
+- empty values leave existing data unchanged on update
+- values containing commas should be quoted
+
+## Minimum required columns
+
+| Column | Purpose |
+| --- | --- |
+| `text` or `name` | option title |
+| `identifier` | stable external identifier for create/update matching |
+
+If `identifier` is present without Moodle's internal `id`, Booking tries to find an existing option by that identifier before deciding whether to create or update.
+
+## Important column groups
+
+### Core option fields
+
+The source guide documents import columns for title, description, location, address, institution, annotation, poll URL, visibility, and identifier.
+
+### Dates and scheduling
+
+It supports:
+
+- single session start/end dates
+- recurring date generation via `dayofweektime` and `semesterid`
+- custom parsing via `dateparseformat`
+
+### Capacity and booking window
+
+The guide documents import support for:
+
+- `maxanswers`
+- `minanswers`
+- `maxoverbooking`
+- `bookingopeningtime`
+- `bookingclosingtime`
+- confirmation and self-booking controls
+
+### Teachers and direct user booking
+
+The source docs document:
+
+- `teacheremail` for assigning one or more teachers
+- `mergeparam` to append or replace
+- `useremail` or `username` for direct participant booking
+- `timebooked` and `completed` for imported booking history
+
+### Pricing and linked courses
+
+The importer can also:
+
+- enable price handling
+- set price-category values by category identifier
+- link options to Moodle courses via short name or numeric IDs
+
+### Availability restrictions
+
+The source guide explicitly documents import support for:
+
+- enrolled-course restrictions
+- cohort restrictions
+- skip booking rules and skip mode
+
+## Recommended admin usage
+
+Use CSV import when you need to:
+
+1. create large batches of similar options
+2. update titles, dates, or capacities across many options
+3. preload staff or participants
+4. maintain option identifiers outside Moodle
+
+## Good practice
+
+- keep identifiers stable over time
+- test the file on staging first
+- import a small sample before a full batch
+- keep an export of the current options before running a large update

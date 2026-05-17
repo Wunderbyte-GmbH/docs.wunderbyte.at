@@ -1,0 +1,108 @@
+---
+title: Managing booking options
+sidebar_position: 4
+---
+
+# Managing booking options
+
+The `MOODLE_405_DEV` docs describe Booking options in far more detail than the first version of this site. This page summarizes the main fields and behaviors administrators should know.
+
+## General fields
+
+The **General** section defines the identity and visibility of an option.
+
+| Field group | Key details from the source docs |
+| --- | --- |
+| Title and prefix | `text` is the main title; `titleprefix` can prepend a short label such as a course number |
+| Description | HTML description; can be reused in messages via placeholders |
+| Location and address | free text by default, or entity-based when `local_entities` is installed |
+| Institution | organizer/department value that also appears in reports and placeholders |
+| Internal annotation | internal note visible to staff, not participants |
+| Identifier | unique human-readable key used for CSV import and updates |
+| Visibility | `invisible` hides the option from normal participants |
+| Header image | optional banner image for the option detail page |
+
+## Capacity and waiting list
+
+The source docs call out three core capacity fields:
+
+- `maxanswers` for confirmed places
+- `minanswers` for informational minimum attendance
+- `maxoverbooking` for waiting-list capacity
+
+They also document `disablebookingusers`, which hides the booking button and turns the option into a staff-managed or invitation-only workflow.
+
+## Availability conditions
+
+The **Availability conditions** section combines time windows and participant restrictions.
+
+### Booking window
+
+- `bookingopeningtime` controls when booking starts
+- `bookingclosingtime` controls when booking stops
+
+### User restrictions documented in the source branch
+
+- enrolled in one or more Moodle courses
+- member of one or more cohorts
+- previously booked another option
+- selected users only
+- user profile field match
+- custom form before confirmation
+- no overlapping bookings
+- capability-based booking inside the instance
+
+Most of the more advanced restrictions are marked as **PRO** in the source docs.
+
+### Rule skipping inside an option
+
+The source docs also describe two option fields for rule control:
+
+- `skipbookingrules`
+- `skipbookingrulesmode`
+
+These allow an option to opt out of listed rules, or to apply only listed rules.
+
+## Advanced options
+
+The **Advanced options** section covers several operational settings:
+
+| Area | What the source docs describe |
+| --- | --- |
+| Cancellation | `disablecancel`, `canceluntilcheckbox`, and `canceluntil` |
+| Status texts | custom texts before booking, after booking, and after completion |
+| Notification message | extra HTML message included in confirmation mail |
+| Poll URLs | participant and teacher poll URLs, with placeholder support |
+| Attachments | files attached to the option |
+| Completion cleanup | `removeafterminutes` to remove linked activity completion later |
+| Multiple bookings | rebooking and wait time until rebooking is allowed |
+| Return URL | redirect after successful booking |
+| Booking for others | `howmanyusers` limits how many additional users one person can book |
+
+## Confirmation workflow
+
+The source docs treat **Demand confirmation** as a dedicated form area.
+
+### `waitforconfirmation`
+
+Three modes are documented:
+
+| Value | Meaning |
+| --- | --- |
+| `0` | immediate confirmation |
+| `1` | every booking stays pending until manually confirmed |
+| `2` | only waiting-list bookings require confirmation |
+
+### `confirmationonnotification`
+
+This controls how managers are notified and whether they confirm all pending bookings together or one at a time.
+
+## Practical admin advice
+
+When you design reusable Booking options, define site conventions for:
+
+1. option identifiers
+2. location and institution naming
+3. who may use advanced settings
+4. when confirmation is required
+5. which restrictions belong in conditions vs. rules vs. manual staff review

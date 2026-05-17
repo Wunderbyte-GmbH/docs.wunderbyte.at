@@ -1,0 +1,62 @@
+---
+title: Booking overview
+slug: /mod_booking
+sidebar_position: 1
+---
+
+# Booking overview
+
+`moodle-mod_booking` is a feature-rich Moodle activity for managing bookable options such as workshops, appointments, course dates, recurring sessions, and bundled training offers.
+
+The `MOODLE_405_DEV` source docs describe Booking as a reference for administrators, teachers, and developers. This public documentation set starts with the administrator-facing parts of that material.
+
+## What the source docs cover
+
+The Booking docs in `MOODLE_405_DEV` are organized around these areas:
+
+- booking option settings and every option-form section
+- booking conditions and availability checks
+- booking rules and schedule-based automation
+- actions after booking
+- placeholders and notification content
+- shortcodes for embedding booking views in Moodle pages
+- sub-bookings, campaigns, and CSV import
+- capabilities, scheduled tasks, override links, and booking extensions
+
+## Quick start for administrators
+
+If you want to:
+
+| Goal | Start here |
+| --- | --- |
+| Install or update Booking safely | [Installation and updates](/docs/mod_booking/installation-and-updates) |
+| Understand the booking option form | [Creating booking activities](/docs/mod_booking/creating-booking-activities) |
+| Configure option fields, confirmation, and availability | [Managing booking options](/docs/mod_booking/managing-options) |
+| Manage participants and staff permissions | [Managing participants](/docs/mod_booking/managing-participants) |
+| Set up rules, actions, campaigns, or sub-bookings | [Integrations and automation](/docs/mod_booking/integrations-and-automation) |
+| Import or update options in bulk | [CSV import and bulk management](/docs/mod_booking/csv-import-and-bulk-management) |
+| Review operational controls and scheduled tasks | [Administrator reference](/docs/mod_booking/administrator-reference) |
+
+## Key concepts
+
+### Booking activity vs. booking option
+
+- A **Booking activity** is the Moodle activity added to a course.
+- A **booking option** is one concrete item users can book inside that activity.
+
+One Booking activity can contain many options, each with its own title, dates, capacity, availability restrictions, notifications, and automation.
+
+### Rules vs. actions after booking
+
+The source docs distinguish two automation models:
+
+- **Booking rules** run on a schedule or on Moodle events and usually send or trigger follow-up actions.
+- **Actions after booking** run immediately when a booking answer is created, confirmed, or deleted.
+
+### Free and PRO scope
+
+Several advanced features documented in the source branch are explicitly marked as **PRO**, including many booking conditions, sub-bookings, campaigns, and actions after booking.
+
+## Documentation scope in this site
+
+This Booking section is based on the `docs/` folder in the `MOODLE_405_DEV` branch and condenses its main administrator guidance into site documentation that is easier to browse from `docs.wunderbyte.at`.
