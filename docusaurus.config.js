@@ -44,22 +44,20 @@ const config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Docs',
       logo: {
         alt: 'Wunderbyte Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          to: '/docs/mod_booking',
           position: 'left',
-          label: 'Documentation',
+          label: 'Booking',
         },
         {
-          href: 'https://github.com/Wunderbyte-GmbH/docs.wunderbyte.at',
-          label: 'GitHub',
-          position: 'right',
+          to: '/docs/mod_datalynx',
+          position: 'left',
+          label: 'Datalynx',
         },
       ],
     },
