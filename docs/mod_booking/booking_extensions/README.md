@@ -4,6 +4,15 @@
 
 ---
 
+## Quick setup path
+
+1. Open your booking activity: `/mod/booking/view.php?id=<cmid>`.
+2. Open option administration: `/mod/booking/editoptions.php?id=<cmid>`.
+3. Open the feature-specific page from this document and apply the settings.
+4. Save and verify with one test booking.
+
+---
+
 ## Table of Contents
 
 1. [What booking extensions can do](#1-what-booking-extensions-can-do)
@@ -56,12 +65,12 @@ To uninstall an extension:
 
 ## 4. For developers: building a booking extension
 
-For full developer documentation, see [Booking extensions developer API](developer-api.md).
+For full developer documentation, see [Booking extensions developer API](./developer-api.md).
 
 ---
 
 ## See also
 
-- [Booking extensions developer API](developer-api.md)
+- [Booking extensions developer API](./developer-api.md)
 - [Developer guides](../developer-guides/BOOKING_EXTENSIONS_API.md)
 - [Booking rules](../booking_rules/README.md) — Custom events from extensions can be used as rule triggers

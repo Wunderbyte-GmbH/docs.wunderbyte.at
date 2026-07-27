@@ -5,6 +5,15 @@ Every rule must have exactly one condition. The condition narrows down the set o
 
 ---
 
+## Quick setup path
+
+1. Open booking rules: `/mod/booking/edit_rules.php?contextid=1`.
+2. Click Add rule or edit an existing rule.
+3. Apply the configuration from this page.
+4. Save, activate, and test with one booking event.
+
+---
+
 ## Table of Contents
 
 1. [select_student_in_bo — Students of a booking option](#1-select_student_in_bo--students-of-a-booking-option)

@@ -4,6 +4,15 @@ This guide explains how to add custom rule types (triggers), conditions, and act
 
 ---
 
+## Quick setup path
+
+1. Open this page and start with the matching section for your use case.
+2. Follow the linked detailed pages from the table of contents for configuration details.
+3. Apply the configuration in Booking and save your changes.
+4. Test with one realistic scenario before rollout.
+
+---
+
 ## Table of Contents
 
 1. [Overview of the rules system](#1-overview-of-the-rules-system)
@@ -202,6 +211,5 @@ $rules = \mod_booking\booking_rules\rules_info::get_all_rule_types();
 
 ## See also
 
-- [Architecture overview](ARCHITECTURE.md)
 - [Booking rules user documentation](../booking_rules/README.md)
-- [Booking extensions API](BOOKING_EXTENSIONS_API.md) — For registering custom events that rules can react to
+- [Booking extensions API](./BOOKING_EXTENSIONS_API.md) — For registering custom events that rules can react to

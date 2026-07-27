@@ -4,6 +4,15 @@ mod_booking registers 5 Moodle scheduled tasks in `db/tasks.php`. These run auto
 
 ---
 
+## Quick setup path
+
+1. Open scheduled tasks in Site administration.
+2. Search for booking-related tasks from this page.
+3. Run one task manually for testing if needed.
+4. Confirm next run times and logs.
+
+---
+
 ## Table of Contents
 
 1. [remove_activity_completion](#1-remove_activity_completion)

@@ -4,6 +4,15 @@ This guide explains how to import or update booking options in bulk using a CSV 
 
 ---
 
+## Quick setup path
+
+1. Prepare your CSV file based on the examples in docs/examples/.
+2. Open the import UI in booking option administration.
+3. Upload CSV, map fields, and run a dry run.
+4. Execute import and validate one imported option.
+
+---
+
 ## Table of Contents
 
 1. [How to import](#1-how-to-import)
@@ -20,9 +29,10 @@ This guide explains how to import or update booking options in bulk using a CSV 
 12. [Availability restrictions](#12-availability-restrictions)
 13. [Notifications and texts](#13-notifications-and-texts)
 14. [Advanced columns](#14-advanced-columns)
-15. [Date formats](#15-date-formats)
-16. [Tips and common mistakes](#16-tips-and-common-mistakes)
-17. [Example files](#17-example-files)
+15. [Slot booking import](#15-slot-booking-import)
+16. [Date formats](#16-date-formats)
+17. [Tips and common mistakes](#17-tips-and-common-mistakes)
+18. [Example files](#18-example-files)
 
 ---
 
@@ -107,7 +117,7 @@ If your dates are in a non-standard format (e.g. `30.04.2026 09:00`), add the co
 |--------|-------------|---------|
 | `dateparseformat` | PHP date format string for the dates in this row | `d.m.Y H:i` |
 
-See [Date formats](#15-date-formats) for details.
+See [Date formats](#16-date-formats) for details.
 
 ---
 
@@ -257,7 +267,71 @@ These columns configure who is allowed to book the option.
 
 ---
 
-## 15. Date formats
+## 15. Slot booking import
+
+Use the following columns to import slot-based booking options.
+
+### Minimum required for slot booking
+
+| Column | What it does | Example |
+|--------|-------------|---------|
+| `slot_enabled` | Enables slot booking for this option (`1` = yes) | `1` |
+| `slot_type` | Slot mode: `fixed`, `rolling`, `session`, `userdefined` | `fixed` |
+| `slot_max_participants_per_slot` | Maximum participants per slot | `1` |
+| `slot_day_1` ... `slot_day_7` | Weekday flags (`1` = active, `0` = inactive). 1=Mon ... 7=Sun | `slot_day_2=1`, `slot_day_3=1` |
+
+### Time fields
+
+| Column | What it does | Example |
+|--------|-------------|---------|
+| `slot_opening_time` | Start of daily slot window (`HH:MM`) | `10:00` |
+| `slot_closing_time` | End of daily slot window (`HH:MM`) | `14:00` |
+| `slot_valid_from` | Validity start as Unix timestamp (recommended) | `1777596000` |
+| `slot_valid_until` | Validity end as Unix timestamp (recommended) | `1782866399` |
+
+> `slot_valid_from` and `slot_valid_until` are parsed as date/time, but Unix timestamps are strongly recommended for deterministic imports.
+
+### Duration and interval behavior
+
+| Column | What it does | Example |
+|--------|-------------|---------|
+| `slot_duration_minutes` | Slot duration in minutes (used for `fixed`/`rolling`) | `20` |
+| `slot_interval_minutes` | Start interval in minutes (`rolling`; optional for `fixed`) | `20` |
+
+### User-defined slot type (`slot_type=userdefined`)
+
+| Column | What it does | Example |
+|--------|-------------|---------|
+| `slot_custom_max_duration` | Max duration per booking in **seconds** | `3600` |
+| `slot_custom_min_duration` | Min duration per booking in **seconds** | `900` |
+| `slot_custom_max_days` | How many days ahead a slot may span in **seconds** | `86400` |
+| `slot_custom_start_interval_minutes` | Start minute step for custom bookings | `1` |
+
+### Optional slot columns
+
+| Column | What it does | Example |
+|--------|-------------|---------|
+| `slot_max_slots_per_user` | Max number of slots each user may book | `1` |
+| `slot_booking_view_mode` | UI mode: `calendar` or `list` | `calendar` |
+| `slot_add_examiners` | Add examiners to slots (`1`/`0`) | `1` |
+| `slot_teacher_pool` | Examiner user ids (comma-separated) | `12,34` |
+| `slot_teachers_required` | Minimum number of examiners required | `0` |
+
+### Example: fixed slots on Tuesday and Wednesday
+
+```csv
+text,identifier,optiontype,slot_enabled,slot_type,slot_booking_view_mode,slot_duration_minutes,slot_interval_minutes,slot_opening_time,slot_closing_time,slot_valid_from,slot_valid_until,slot_day_1,slot_day_2,slot_day_3,slot_day_4,slot_day_5,slot_day_6,slot_day_7,slot_max_participants_per_slot,slot_max_slots_per_user
+Sprechstunde Juli,OFFICE-2026-07,2,1,fixed,calendar,20,20,10:00,14:00,1777596000,1782866399,0,1,1,0,0,0,0,2,1
+```
+
+### Example: user-defined slots up to 60 minutes
+
+```csv
+text,identifier,optiontype,slot_enabled,slot_type,slot_opening_time,slot_closing_time,slot_valid_from,slot_valid_until,slot_day_1,slot_day_2,slot_day_3,slot_day_4,slot_day_5,slot_day_6,slot_day_7,slot_custom_max_duration,slot_custom_min_duration,slot_custom_max_days,slot_custom_start_interval_minutes,slot_max_participants_per_slot
+Flexible Sprechstunde,OFFICE-FLEX-2026-07,2,1,userdefined,10:00,14:00,1777596000,1782866399,0,1,0,0,0,0,0,3600,900,86400,1,2
+```
+
+## 16. Date formats
 
 All date and time columns (`coursestarttime`, `courseendtime`, `bookingopeningtime`, `bookingclosingtime`, `canceluntil`, `timebooked`) accept:
 
@@ -277,9 +351,22 @@ If your dates are in a different format (e.g. European `DD.MM.YYYY HH:MM`), add 
 
 The same format applies to all date cells in that row.
 
+### Multiple sessions (`coursestarttime_1`, `courseendtime_1`, …)
+
+To import an option with several sessions, use the indexed date columns
+`coursestarttime_1` / `courseendtime_1`, `coursestarttime_2` / `courseendtime_2`, and so on
+(paired with `optiondateid_1`, `optiondateid_2`, … — use `0` to create a new date).
+
+Each indexed date cell accepts the **same formats** as the single-date columns above:
+a Unix timestamp, an ISO 8601 string, or a readable date matching your `dateparseformat`.
+You may even **mix** formats within one row — for example a readable
+`coursestarttime_1 = 30.04.2026 09:00` alongside timestamp-based later sessions — as long as
+every readable cell matches the `dateparseformat` you set. Numeric timestamps are always
+passed through unchanged.
+
 ---
 
-## 16. Tips and common mistakes
+## 17. Tips and common mistakes
 
 | Problem | Solution |
 |---------|---------|
@@ -294,12 +381,12 @@ The same format applies to all date cells in that row.
 
 ---
 
-## 17. Example files
+## 18. Example files
 
 Ready-to-use example CSV files are located in the `examples/` subfolder:
 
 | File | Contents |
 |------|---------|
-| [Examples page](examples/index.mdx) | Includes the minimal import, dates-and-prices import, and users-and-teachers import examples from the source docs |
-| [Examples page](examples/index.mdx) | Includes the full example with dates, capacity, teacher, and prices |
-| [Examples page](examples/index.mdx) | Includes the assigning-teachers and pre-booking-users example |
+| [examples/import_minimal.csv](/docs/mod_booking/examples) | Minimal import: title, identifier, and one date |
+| [examples/import_with_dates_and_prices.csv](/docs/mod_booking/examples) | Full example with dates, capacity, teacher, and prices |
+| [examples/import_users_and_teachers.csv](/docs/mod_booking/examples) | Assigning teachers and pre-booking users |

@@ -9,6 +9,7 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "deploy:sftp": "bash ./scripts/deploy-sftp.sh",
+    "sync:docs": "node ./scripts/sync-upstream-docs.mjs",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",

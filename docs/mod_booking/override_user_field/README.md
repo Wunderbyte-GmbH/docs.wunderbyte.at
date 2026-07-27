@@ -4,6 +4,15 @@ The **Override user field** feature lets you generate a special URL that tempora
 
 ---
 
+## Quick setup path
+
+1. Open the booking option and identify required profile field checks.
+2. Build an override URL as described on this page.
+3. Test URL with one user that should bypass and one that should not.
+4. Roll out URL only to trusted users.
+
+---
+
 ## Table of Contents
 
 1. [What it does](#1-what-it-does)

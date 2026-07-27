@@ -2,6 +2,8 @@
 
 **Actions after booking** (also called *booking actions* or *bo_actions*) are automated actions that are triggered **immediately** when a specific booking event occurs for a user. They are distinct from [booking rules](../booking_rules/README.md), which are schedule-based or event-triggered notifications.
 
+> Important: If your question is about sending messages, reminders, or notification emails, use [Booking rules](../booking_rules/README.md) documentation, not Actions after booking.
+
 The key difference:
 
 | Feature | Booking rules | Actions after booking |
@@ -11,6 +13,15 @@ The key difference:
 | Configuration | Booking Rules administration page | Per booking option (option form → Actions section) |
 
 Actions after booking are a **PRO feature** of mod_booking.
+
+---
+
+## Quick setup path
+
+1. Open option edit page: `/mod/booking/editoptions.php?id=<cmid>`.
+2. Edit target option and open Booking actions section.
+3. Add or edit the action type documented here.
+4. Save and test with one booking event.
 
 ---
 
@@ -41,10 +52,10 @@ Actions must be saved on an existing option (they cannot be added to a new, unsa
 
 | Type | Class | What it does |
 |------|-------|-------------|
-| [Cancel booking](cancelbooking.md) | `cancelbooking` | Cancels the user's booking answer for the parent option after a trigger. |
-| [Book other options](bookotheroptions.md) | `bookotheroptions` | Automatically books one or more other booking options for the user. |
-| [Execute REST script](executerestscript.md) | `executerestscript` | Calls an external REST API endpoint and optionally records the response. |
-| [Set user profile field](userprofilefield.md) | `userprofilefield` | Sets or modifies a custom user profile field when the booking is confirmed. |
+| [Cancel booking](./cancelbooking.md) | `cancelbooking` | Cancels the user's booking answer for the parent option after a trigger. |
+| [Book other options](./bookotheroptions.md) | `bookotheroptions` | Automatically books one or more other booking options for the user. |
+| [Execute REST script](./executerestscript.md) | `executerestscript` | Calls an external REST API endpoint and optionally records the response. |
+| [Set user profile field](./userprofilefield.md) | `userprofilefield` | Sets or modifies a custom user profile field when the booking is confirmed. |
 
 ---
 
@@ -67,8 +78,8 @@ Most action types (cancel, book others, execute REST) return status `1` (abort) 
 
 ## See also
 
-- [Action type: Cancel booking](cancelbooking.md)
-- [Action type: Book other options](bookotheroptions.md)
-- [Action type: Execute REST script](executerestscript.md)
-- [Action type: Set user profile field](userprofilefield.md)
+- [Action type: Cancel booking](./cancelbooking.md)
+- [Action type: Book other options](./bookotheroptions.md)
+- [Action type: Execute REST script](./executerestscript.md)
+- [Action type: Set user profile field](./userprofilefield.md)
 - [Booking rules](../booking_rules/README.md) — For schedule-based and event-based email notifications

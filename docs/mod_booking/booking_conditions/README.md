@@ -1,5 +1,7 @@
 # Booking Conditions
 
+> **Primary page** for: booking restrictions, booking limitations, who can book, when users can book, booking window, time-based restrictions. For messaging and reminders, see [Booking Rules](../booking_rules/README.md).
+
 Booking conditions control **who can book** a booking option and **when**. Each booking option can have one or more conditions configured. If a condition is not met, the user sees an alert and the "Book it" button is blocked (or replaced by a warning).
 
 ---
@@ -22,17 +24,17 @@ Conditions are configured per booking option:
 
 | Condition | File | PRO required | Description |
 |-----------|------|:---:|-------------|
-| [Booking time](booking_time.md) | `booking_time.php` | — | Restricts booking to a specific time window (opening / closing date). |
-| [Enrolled in course](enrolled_in_course.md) | `enrolledincourse.php` | 🔒 | Only users enrolled in one or more selected Moodle courses can book. |
-| [Enrolled in cohort](enrolled_in_cohort.md) | `enrolledincohorts.php` | 🔒 | Only members of one or more selected cohorts can book. |
-| [Has competency](has_competency.md) | `hascompetency.php` | 🔒 | Only users who have (been rated for) one or more Moodle competencies can book. |
-| [Previously booked](previously_booked.md) | `previouslybooked.php` | 🔒 | Requires the user to have already booked (and optionally completed) another booking option. |
-| [Select users](select_users.md) | `selectusers.php` | 🔒 | Restricts booking to an explicit list of selected users. |
-| [User profile field (standard)](user_profile_field.md) | `userprofilefield_1_default.php` | 🔒 | Checks a standard Moodle user profile field against a value using a configurable operator. |
-| [User profile field (custom)](user_profile_field_custom.md) | `userprofilefield_2_custom.php` | 🔒 | Same as above but for custom user profile fields. |
-| [No overlapping bookings](no_overlapping.md) | `nooverlapping.php` | — | Blocks or warns when a user tries to book an option whose dates overlap with another booking they already have. |
-| [Allowed to book in instance](allowed_to_book_in_instance.md) | `allowedtobookininstance.php` | 🔒 | Restricts booking to users who hold a specific Moodle capability in the booking instance. |
-| [Custom form](custom_form.md) | `customform.php` | 🔒 | Forces the user to fill in a custom form (checkboxes, text fields, dropdowns, …) before booking is finalised. |
+| [Booking time](./booking_time.md) | `booking_time.php` | — | Restricts booking to a specific time window (opening / closing date). |
+| [Enrolled in course](./enrolled_in_course.md) | `enrolledincourse.php` | 🔒 | Only users enrolled in one or more selected Moodle courses can book. |
+| [Enrolled in cohort](./enrolled_in_cohort.md) | `enrolledincohorts.php` | 🔒 | Only members of one or more selected cohorts can book. |
+| [Has competency](./has_competency.md) | `hascompetency.php` | 🔒 | Only users who have (been rated for) one or more Moodle competencies can book. |
+| [Previously booked](./previously_booked.md) | `previouslybooked.php` | 🔒 | Requires the user to have already booked (and optionally completed) another booking option. |
+| [Select users](./select_users.md) | `selectusers.php` | 🔒 | Restricts booking to an explicit list of selected users. |
+| [User profile field (standard)](./user_profile_field.md) | `userprofilefield_1_default.php` | 🔒 | Checks a standard Moodle user profile field against a value using a configurable operator. |
+| [User profile field (custom)](./user_profile_field_custom.md) | `userprofilefield_2_custom.php` | 🔒 | Same as above but for custom user profile fields. |
+| [No overlapping bookings](./no_overlapping.md) | `nooverlapping.php` | — | Blocks or warns when a user tries to book an option whose dates overlap with another booking they already have. |
+| [Allowed to book in instance](./allowed_to_book_in_instance.md) | `allowedtobookininstance.php` | 🔒 | Restricts booking to users who hold a specific Moodle capability in the booking instance. |
+| [Custom form](./custom_form.md) | `customform.php` | 🔒 | Forces the user to fill in a custom form (checkboxes, text fields, dropdowns, …) before booking is finalised. |
 
 ---
 
@@ -60,3 +62,11 @@ This distinction is only relevant if you work with the database directly or the 
 ## See also
 
 - [CSV Import User Guide](../CSV_IMPORT_USER_GUIDE.md) — availability restrictions can also be set via CSV import (columns `boavenrolledincourse`, `boavenrolledincohorts`, …).
+
+
+## Quick setup path
+
+1. Open your booking activity: `/mod/booking/view.php?id=<cmid>`.
+2. Open option administration: `/mod/booking/editoptions.php?id=<cmid>`.
+3. Open the feature-specific page from this document and apply the settings.
+4. Save and verify with one test booking.

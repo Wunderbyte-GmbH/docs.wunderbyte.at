@@ -4,6 +4,15 @@ This is the complete developer reference for building `bookingextension_*` subpl
 
 ---
 
+## Quick setup path
+
+1. Open this page and start with the matching section for your use case.
+2. Follow the linked detailed pages from the table of contents for configuration details.
+3. Apply the configuration in Booking and save your changes.
+4. Test with one realistic scenario before rollout.
+
+---
+
 ## Table of Contents
 
 1. [Plugin structure](#1-plugin-structure)
@@ -102,7 +111,7 @@ bookingextension_<pluginname>/classes/placeholders/<tokenname>.php
 
 Namespace: `bookingextension_<pluginname>\placeholders\`
 
-The class must have a static `return_value()` method following the same signature as `mod_booking\placeholders\placeholder_base`. See [Placeholders API](PLACEHOLDERS_API.md) for the full signature.
+The class must have a static `return_value()` method following the same signature as `mod_booking\placeholders\placeholder_base`. See [Placeholders API](./PLACEHOLDERS_API.md) for the full signature.
 
 ---
 
@@ -190,5 +199,4 @@ public function uninstall_cleanup() {
 
 - [Booking extensions overview](../booking_extensions/README.md)
 - [Booking extensions quick-start](../booking_extensions/developer-api.md)
-- [Architecture overview](ARCHITECTURE.md)
-- [Placeholders API](PLACEHOLDERS_API.md)
+- [Placeholders API](./PLACEHOLDERS_API.md)

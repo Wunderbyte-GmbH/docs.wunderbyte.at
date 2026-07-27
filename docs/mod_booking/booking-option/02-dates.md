@@ -4,6 +4,15 @@ The **Dates** section lets you define when a booking option takes place. Options
 
 ---
 
+## Quick setup path
+
+1. Open your booking activity: `/mod/booking/view.php?id=<cmid>`.
+2. Open option administration: `/mod/booking/editoptions.php?id=<cmid>`.
+3. Open the feature-specific page from this document and apply the settings.
+4. Save and verify with one test booking.
+
+---
+
 ## Table of Contents
 
 1. [Single and multiple sessions](#1-single-and-multiple-sessions)
@@ -73,7 +82,7 @@ This setting can be **locked** by an admin for the whole installation so that it
 ## 4. How dates affect the option display
 
 - Options **without any date** are displayed as "no date" and sorted to the bottom of the list.
-- The option's booking opening and closing times (set under [Availability conditions](04-availability.md)) are separate from the session dates.
+- The option's booking opening and closing times (set under [Availability conditions](./04-availability.md)) are separate from the session dates.
 - The `{coursestarttime}` and `{courseendtime}` placeholders in e-mail templates use the earliest/latest session timestamps.
 - Individual session details are available via the `{dates}` and `{option_times}` placeholders.
 
@@ -81,6 +90,6 @@ This setting can be **locked** by an admin for the whole installation so that it
 
 ## Related pages
 
-- [General settings](01-general.md) — Title, capacity
-- [Availability conditions](04-availability.md) — Booking window (open/close times)
+- [General settings](./01-general.md) — Title, capacity
+- [Availability conditions](./04-availability.md) — Booking window (open/close times)
 - [CSV Import — Dates](../CSV_IMPORT_USER_GUIDE.md#5-dates-and-scheduling) — How to set dates via CSV

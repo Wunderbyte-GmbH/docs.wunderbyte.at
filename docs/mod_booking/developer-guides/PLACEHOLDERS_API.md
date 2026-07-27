@@ -4,6 +4,15 @@ This guide explains how to implement a custom placeholder class for the mod_book
 
 ---
 
+## Quick setup path
+
+1. Open this page and start with the matching section for your use case.
+2. Follow the linked detailed pages from the table of contents for configuration details.
+3. Apply the configuration in Booking and save your changes.
+4. Test with one realistic scenario before rollout.
+
+---
+
 ## Table of Contents
 
 1. [How placeholders work](#1-how-placeholders-work)
@@ -149,6 +158,5 @@ The namespace should be `bookingextension_<pluginname>\placeholders\`. These are
 
 ## See also
 
-- [Architecture overview](ARCHITECTURE.md)
 - [Placeholders user documentation](../placeholders/README.md)
-- [Booking extensions API](BOOKING_EXTENSIONS_API.md) — For adding placeholders via an extension
+- [Booking extensions API](./BOOKING_EXTENSIONS_API.md) — For adding placeholders via an extension

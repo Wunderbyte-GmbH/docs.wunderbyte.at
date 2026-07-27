@@ -16,6 +16,13 @@ const config = {
 
   onBrokenLinks: 'throw',
 
+  markdown: {
+    // The plugin docs are imported as plain GitHub Markdown (HTML comments,
+    // angle-bracket placeholders such as <cmid>, …), so `.md` files are parsed
+    // as CommonMark. Pages that need MDX use the `.mdx` extension.
+    format: 'detect',
+  },
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],

@@ -10,6 +10,25 @@ Sub-bookings allow you to:
 
 Sub-bookings are a **PRO feature** of mod_booking.
 
+## Click-by-click setup
+
+1. Open the booking activity: `/mod/booking/view.php?id=<cmid>`.
+2. Open option management: `/mod/booking/editoptions.php?id=<cmid>`.
+3. Click Edit on the target option.
+4. In the option form, open Sub-bookings.
+5. Click Add sub-booking and choose the type.
+6. Configure fields and save.
+7. Test booking as participant to verify the extra step appears.
+
+---
+
+## Quick setup path
+
+1. Open this page and start with the matching section for your use case.
+2. Follow the linked detailed pages from the table of contents for configuration details.
+3. Apply the configuration in Booking and save your changes.
+4. Test with one realistic scenario before rollout.
+
 ---
 
 ## Table of Contents
@@ -52,9 +71,9 @@ Sub-bookings are configured per booking option:
 
 | Type | Class | Description |
 |------|-------|-------------|
-| [Additional item](subbooking_additionalitem.md) | `subbooking_additionalitem` | A selectable add-on (e.g., lunch, equipment). Can be linked to a custom form field and can carry a price. |
-| [Additional person](subbooking_additionalperson.md) | `subbooking_additionalperson` | Allows the booker to register one or more additional persons alongside themselves. |
-| [Time slot](subbooking_timeslot.md) | `subbooking_timeslot` | Offers a set of bookable time slots within the option. Participants choose their preferred slot. |
+| [Additional item](./subbooking_additionalitem.md) | `subbooking_additionalitem` | A selectable add-on (e.g., lunch, equipment). Can be linked to a custom form field and can carry a price. |
+| [Additional person](./subbooking_additionalperson.md) | `subbooking_additionalperson` | Allows the booker to register one or more additional persons alongside themselves. |
+| [Time slot](./subbooking_timeslot.md) | `subbooking_timeslot` | Offers a set of bookable time slots within the option. Participants choose their preferred slot. |
 
 ---
 
@@ -79,7 +98,7 @@ When `block = 0` (the default), the sub-booking is presented as an optional add-
 
 ## See also
 
-- [Sub-booking type: Additional item](subbooking_additionalitem.md)
-- [Sub-booking type: Additional person](subbooking_additionalperson.md)
-- [Sub-booking type: Time slot](subbooking_timeslot.md)
+- [Sub-booking type: Additional item](./subbooking_additionalitem.md)
+- [Sub-booking type: Additional person](./subbooking_additionalperson.md)
+- [Sub-booking type: Time slot](./subbooking_timeslot.md)
 - [Booking option form](../booking-option/README.md)

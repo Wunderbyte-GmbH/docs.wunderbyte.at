@@ -1,6 +1,6 @@
 # Sub-booking Type: Time Slot
 
-**Class:** `mod_booking\subbookings\sb_types\subbooking_timeslot`  
+**Class:** `mod_booking\subbookings\sb_types\subbooking_timeslot`
 **PRO required:** Yes 🔒
 
 ---
@@ -14,6 +14,17 @@ The **Time slot** sub-booking allows participants to choose a **specific time sl
 - Each slot has its own capacity and/or price
 
 Each time slot appears as a bookable unit. Participants select exactly one slot per booking.
+
+## Click-by-click setup
+
+1. Open the booking activity: `/mod/booking/view.php?id=<cmid>`.
+2. Open options list: `/mod/booking/editoptions.php?id=<cmid>`.
+3. Click Edit on the target option.
+4. In the form, open the Sub-bookings section.
+5. Add sub-booking type Time slot.
+6. Set slot name, duration, and capacity values.
+7. Save the option and create at least one test slot.
+8. Open the option as participant and verify slot selection appears.
 
 ---
 
@@ -57,7 +68,7 @@ Participants who book the workshop must select either the morning or afternoon s
 
 ## See also
 
-- [Sub-bookings overview](README.md)
-- [Additional item sub-booking](subbooking_additionalitem.md)
-- [Additional person sub-booking](subbooking_additionalperson.md)
+- [Sub-bookings overview](./README.md)
+- [Additional item sub-booking](./subbooking_additionalitem.md)
+- [Additional person sub-booking](./subbooking_additionalperson.md)
 - [Booking option — Dates settings](../booking-option/02-dates.md)

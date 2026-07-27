@@ -11,6 +11,15 @@ Each placeholder maps to a PHP class under `classes/placeholders/placeholders/`.
 
 ---
 
+## Quick setup path
+
+1. Open booking rules editor: `/mod/booking/edit_rules.php?contextid=1`.
+2. Edit the mail action template text.
+3. Insert placeholders from this page.
+4. Send a test message and verify placeholder output.
+
+---
+
 ## Table of Contents
 
 1. [User fields](#1-user-fields)

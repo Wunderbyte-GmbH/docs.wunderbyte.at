@@ -1,6 +1,17 @@
 # Availability Conditions
 
+> **Primary page** for: temporal booking restrictions (opening time, closing time, booking window), access restrictions. For automated emails and reminders, see [Booking Rules](../booking_rules/README.md).
+
 The **Availability conditions** section (header: *Availability conditions*) controls **who** can book the option and **when** bookings are accepted. It is one of the most powerful sections in the booking option form.
+
+---
+
+## Quick setup path
+
+1. Open your booking activity: `/mod/booking/view.php?id=<cmid>`.
+2. Open option administration: `/mod/booking/editoptions.php?id=<cmid>`.
+3. Open the feature-specific page from this document and apply the settings.
+4. Save and verify with one test booking.
 
 ---
 
@@ -125,7 +136,7 @@ Within a booking option you can override which rules apply:
 
 ## Related pages
 
-- [General settings](01-general.md) — Capacity and waiting list
-- [Advanced options](07-advanced.md) — Cancellation settings
-- [Demand confirmation](08-confirmation.md) — Manual approval workflow
+- [General settings](./01-general.md) — Capacity and waiting list
+- [Advanced options](./07-advanced.md) — Cancellation settings
+- [Demand confirmation](./08-confirmation.md) — Manual approval workflow
 - [CSV Import — Availability restrictions](../CSV_IMPORT_USER_GUIDE.md#12-availability-restrictions)

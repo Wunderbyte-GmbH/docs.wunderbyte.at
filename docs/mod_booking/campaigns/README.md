@@ -1,5 +1,7 @@
 # Campaigns — Overview
 
+> **Primary page** for: temporary price changes, temporary capacity/place changes, and time-boxed booking behavior changes (for example "only for two days").
+
 **Booking campaigns** let you modify how a booking option behaves during a defined time window, based on a booking custom field value and an optional user profile condition. You can use campaigns to:
 
 - **Block** booking access for a subset of options during a specific period
@@ -7,6 +9,25 @@
 - **Increase capacity** temporarily for a set of options
 
 Campaigns are a **PRO feature** of mod_booking.
+
+## Click-by-click setup
+
+1. Open campaign management: `/mod/booking/edit_campaigns.php`.
+2. Click Add campaign.
+3. Choose campaign type (Block-booking or Custom field).
+4. Set campaign time window.
+5. Set option field filter and value.
+6. Configure effect values (block percentage, price factor, limit factor).
+7. Save campaign and test one matching option.
+
+---
+
+## Quick setup path
+
+1. Open this page and start with the matching section for your use case.
+2. Follow the linked detailed pages from the table of contents for configuration details.
+3. Apply the configuration in Booking and save your changes.
+4. Test with one realistic scenario before rollout.
 
 ---
 
@@ -52,8 +73,8 @@ Two campaign types are available:
 
 | Type | Class | What it does |
 |------|-------|-------------|
-| [Block-booking campaign](campaign_blockbooking.md) | `campaign_blockbooking` | Blocks booking access (or limits available places to a percentage) for options matching a custom field value, optionally overridable by a user price category |
-| [Custom field campaign](campaign_customfield.md) | `campaign_customfield` | Applies a price factor and/or capacity factor to options matching a custom field value, within a defined time window |
+| [Block-booking campaign](./campaign_blockbooking.md) | `campaign_blockbooking` | Blocks booking access (or limits available places to a percentage) for options matching a custom field value, optionally overridable by a user price category |
+| [Custom field campaign](./campaign_customfield.md) | `campaign_customfield` | Applies a price factor and/or capacity factor to options matching a custom field value, within a defined time window |
 
 ---
 
@@ -77,7 +98,7 @@ Campaigns do **not** modify the stored booking option data — they apply their 
 
 ## 5. Further reading
 
-- [Campaign type: Block-booking](campaign_blockbooking.md)
-- [Campaign type: Custom field campaign](campaign_customfield.md)
+- [Campaign type: Block-booking](./campaign_blockbooking.md)
+- [Campaign type: Custom field campaign](./campaign_customfield.md)
 - [Booking option — Price settings](../booking-option/05-price.md)
 - [Availability conditions](../booking_conditions/README.md)

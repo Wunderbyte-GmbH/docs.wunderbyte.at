@@ -15,7 +15,14 @@
   --ifm-color-primary-lightest: #4a5eab;
   --ifm-color-secondary: #ec8600;
   --ifm-background-color: #ffffff;
-  --ifm-font-color-base: #1c1c1b;
+  /*
+   * Text colour is set through --ifm-color-content (Infima derives
+   * --ifm-font-color-base from it). Infima ships inside the
+   * `@layer docusaurus.infima` cascade layer while this file is unlayered, so
+   * every value set here also wins in dark mode: each colour defined below must
+   * have a counterpart in the [data-theme='dark'] block.
+   */
+  --ifm-color-content: #1c1c1b;
   --ifm-navbar-background-color: #263683;
   --ifm-navbar-link-color: #ffffff;
   --ifm-navbar-link-hover-color: #ffffff;
@@ -36,6 +43,7 @@
   --ifm-color-primary-lighter: #7888cc;
   --ifm-color-primary-lightest: #92a0d5;
   --ifm-background-color: #1c1c1b;
+  --ifm-color-content: #e3e3e3;
   --ifm-navbar-background-color: #263683;
   --ifm-footer-background-color: #151514;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);

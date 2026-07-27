@@ -4,6 +4,15 @@ This page shows complete, real-world booking rule configurations. Each example l
 
 ---
 
+## Quick setup path
+
+1. Open booking rules: `/mod/booking/edit_rules.php?contextid=1`.
+2. Click Add rule or edit an existing rule.
+3. Apply the configuration from this page.
+4. Save, activate, and test with one booking event.
+
+---
+
 ## Table of Contents
 
 1. [Reminder 3 days before course start (all booked participants)](#1-reminder-3-days-before-course-start-all-booked-participants)
@@ -34,7 +43,7 @@ This page shows complete, real-world booking rule configurations. Each example l
 | **Role** | Booked |
 | **Action** | `send_mail` |
 | **Subject** | Your booking starts in a few days |
-| **Body** | Hi \{firstname\},\<br\>your booking "\{title\}" starts on \{bookingdetails\}.\<br\>See you soon! |
+| **Body** | Hi {firstname},\<br\>your booking "{title}" starts on {bookingdetails}.\<br\>See you soon! |
 
 **How it works:** Every time cron runs, the system finds all booking options whose `coursestarttime` is exactly 3 days in the future (with a 1-hour tolerance). For each such option it emails all booked participants.
 
@@ -53,8 +62,8 @@ This page shows complete, real-world booking rule configurations. Each example l
 | **Condition** | `select_student_in_bo` |
 | **Role** | Booked |
 | **Action** | `send_mail` |
-| **Subject** | A session of \{title\} starts tomorrow |
-| **Body** | Hi \{firstname\},\<br\>a session of "\{title\}" starts tomorrow:\<br\>\{bookingdetails\} |
+| **Subject** | A session of {title} starts tomorrow |
+| **Body** | Hi {firstname},\<br\>a session of "{title}" starts tomorrow:\<br\>{bookingdetails} |
 
 **Tip:** You can override the reminder lead-time per session by setting the *daystonotify* field on individual option dates. If *daystonotify* is greater than 0 for a session, that value overrides the rule's *Days* setting for that session only.
 
@@ -72,8 +81,8 @@ This page shows complete, real-world booking rule configurations. Each example l
 | **Condition** | `select_user_from_event` |
 | **User type** | User affected by the event (the person who booked) |
 | **Action** | `send_mail` |
-| **Subject** | You have successfully booked: \{title\} |
-| **Body** | Dear \{firstname\} \{lastname\},\<br\>thank you for booking "\{title\}".\<br\>\{bookingdetails\}\<br\>Best regards |
+| **Subject** | You have successfully booked: {title} |
+| **Body** | Dear {firstname} {lastname},\<br\>thank you for booking "{title}".\<br\>{bookingdetails}\<br\>Best regards |
 
 ---
 
@@ -89,8 +98,8 @@ This page shows complete, real-world booking rule configurations. Each example l
 | **Condition** | `select_user_from_event` |
 | **User type** | User affected by the event |
 | **Action** | `send_mail` |
-| **Subject** | You are on the waiting list for: \{title\} |
-| **Body** | Dear \{firstname\} \{lastname\},\<br\>you have been placed on the waiting list for "\{title\}".\<br\>We will notify you if a spot becomes available. |
+| **Subject** | You are on the waiting list for: {title} |
+| **Body** | Dear {firstname} {lastname},\<br\>you have been placed on the waiting list for "{title}".\<br\>We will notify you if a spot becomes available. |
 
 ---
 
@@ -105,8 +114,8 @@ This page shows complete, real-world booking rule configurations. Each example l
 | **Event** | `bookinganswer_cancelled` |
 | **Condition** | `select_teacher_in_bo` |
 | **Action** | `send_mail` |
-| **Subject** | A participant cancelled: \{title\} |
-| **Body** | Hi \{firstname\},\<br\>a participant has cancelled their booking for "\{title\}".\<br\>\{bookingdetails\} |
+| **Subject** | A participant cancelled: {title} |
+| **Body** | Hi {firstname},\<br\>a participant has cancelled their booking for "{title}".\<br\>{bookingdetails} |
 
 ---
 
@@ -121,8 +130,8 @@ This page shows complete, real-world booking rule configurations. Each example l
 | **Event** | `bookingoption_updated` |
 | **Condition** | `select_responsible_contact_in_bo` |
 | **Action** | `send_mail` |
-| **Subject** | Changes in booking option: \{title\} |
-| **Body** | Hi \{firstname\},\<br\>the following booking option has changed:\<br\>\{changes\}\<br\>View the option: \{bookinglink\} |
+| **Subject** | Changes in booking option: {title} |
+| **Body** | Hi {firstname},\<br\>the following booking option has changed:\<br\>{changes}\<br\>View the option: {bookinglink} |
 
 ---
 
@@ -156,7 +165,7 @@ This page shows complete, real-world booking rule configurations. Each example l
 | **Users** | *(select the coordinator user)* |
 | **Action** | `send_copy_of_mail` |
 | **Subject prefix** | `[COPY] ` |
-| **Message prefix** | `This is a copy of a message sent to participants of: \{title\}\n\n---\n\n` |
+| **Message prefix** | `This is a copy of a message sent to participants of: {title}\n\n---\n\n` |
 
 ---
 
@@ -175,8 +184,8 @@ This page shows complete, real-world booking rule configurations. Each example l
 | **Profile field** | `manager_id` |
 | **User from event type** | User affected by the event (the person who booked) |
 | **Action** | `send_mail` |
-| **Subject** | Your employee booked: \{title\} |
-| **Body** | Hi \{firstname\},\<br\>one of your team members has booked the following option:\<br\>\{bookingdetails\} |
+| **Subject** | Your employee booked: {title} |
+| **Body** | Hi {firstname},\<br\>one of your team members has booked the following option:\<br\>{bookingdetails} |
 
 ---
 
@@ -194,8 +203,8 @@ This page shows complete, real-world booking rule configurations. Each example l
 | **Date field** | `installmentpayment` |
 | **Condition** | `select_user_shopping_cart` |
 | **Action** | `send_mail` |
-| **Subject** | Your payment for \{title\} is due in 2 days |
-| **Body** | Hi \{firstname\},\<br\>a payment instalment for "\{title\}" is due on \{duedate\}.\<br\>Please ensure your payment is completed on time.\<br\>Price: \{price\} |
+| **Subject** | Your payment for {title} is due in 2 days |
+| **Body** | Hi {firstname},\<br\>a payment instalment for "{title}" is due on {duedate}.\<br\>Please ensure your payment is completed on time.\<br\>Price: {price} |
 
 ---
 

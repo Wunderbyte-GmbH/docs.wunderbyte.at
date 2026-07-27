@@ -16,6 +16,24 @@ npm run build
 npm run typecheck
 ```
 
+## Updating the plugin documentation
+
+The pages under `docs/mod_booking/` and `docs/mod_datalynx/` are imported from the plugin
+repositories (`moodle-mod_booking@main` and `moodle-mod_datalynx@develop`):
+
+```bash
+npm run sync:docs
+```
+
+The script clones both repositories, copies their `docs/` trees into place, and adapts them for
+the site (GitHub-only back links removed, missing screenshot references dropped, Moodle URLs
+turned into code spans, relative links rewritten, Datalynx sidebar positions added). Use
+`BOOKING_SRC=/path/to/checkout` and `DATALYNX_SRC=/path/to/checkout` to sync from local clones.
+
+Curated pages that only exist here (`index.mdx` overviews, `examples/`, `developer-guides/ARCHITECTURE.md`,
+`certificates_de.md`) are never overwritten; the script lists them after each run so stale imports
+can be reviewed.
+
 ## Deployment
 
 Local deployment uploads the generated `build/` output to `dedi458.your-server.de` over SFTP:

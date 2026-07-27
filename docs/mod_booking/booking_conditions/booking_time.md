@@ -20,7 +20,13 @@ When a user tries to book outside the configured window, they see a warning aler
 
 ## How to configure it
 
-Open the booking option edit form and scroll to the **Availability / Booking conditions** section.
+For non-technical users, use this click path:
+
+1. Open your booking activity: `/mod/booking/view.php?id=<cmid>`.
+2. Open the options list: `/mod/booking/editoptions.php?id=<cmid>`.
+3. Click **Edit** on the target option (or create one first).
+4. In the option form, scroll to **Availability / Booking conditions**.
+5. Enable this condition and save the option.
 
 ### Step 1 — Enable the opening restriction (optional)
 
@@ -68,4 +74,4 @@ See the [CSV Import User Guide](../CSV_IMPORT_USER_GUIDE.md#6-capacity-and-booki
 
 ## Back to overview
 
-[← All booking conditions](README.md)
+[← All booking conditions](./README.md)

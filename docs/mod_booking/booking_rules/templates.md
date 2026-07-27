@@ -6,6 +6,17 @@ To load a template: click **Load a template rule** at the top of the rule editor
 
 ---
 
+## Quick setup path
+
+If you use the booking AI assistant, you can ask it to set up one of these templates directly, for example: "Set up a booking confirmation email rule." The agent can first check existing rules and then apply a template-based setup after your confirmation.
+
+1. Open booking rules: `/mod/booking/edit_rules.php?contextid=1`.
+2. Click Add rule or edit an existing rule.
+3. Apply the configuration from this page.
+4. Save, activate, and test with one booking event.
+
+---
+
 ## Table of Contents
 
 1. [Template — Notification N days before start](#1-template--notification-n-days-before-start)
@@ -34,7 +45,7 @@ Sends an email reminder to all booked participants a configurable number of days
 | **Condition** | `select_student_in_bo` — status: Booked |
 | **Action** | `send_mail` |
 | **Subject** | Your booking starts in a few days |
-| **Body** | Your booking starts in a few days: \{bookingdetails\} \<br\> Name: \{participant\} \<br\> To get an overview of all bookings, click on the following link: \{bookinglink\}\<br\> Here is the link to the course: \{courselink\} |
+| **Body** | Your booking starts in a few days: {bookingdetails} \<br\> Name: {participant} \<br\> To get an overview of all bookings, click on the following link: {bookinglink}\<br\> Here is the link to the course: {courselink} |
 
 **After loading:** Change the *Days* field to your desired notification window (e.g., 7 for one week before, 1 for the day before).
 
@@ -53,8 +64,8 @@ Sends a per-session reminder to all booked participants shortly before each indi
 | **Days** | (set to your desired value, e.g., `1`) |
 | **Condition** | `select_student_in_bo` — status: Booked |
 | **Action** | `send_mail` |
-| **Subject** | A new session of \{Title\} will start soon |
-| **Body** | Good day \{firstname\} \{lastname\},\<br\>the next session of "\{title\}" will start soon:\<br\>\<br\>\{bookingdetails\} |
+| **Subject** | A new session of {Title} will start soon |
+| **Body** | Good day {firstname} {lastname},\<br\>the next session of "{title}" will start soon:\<br\>\<br\>{bookingdetails} |
 
 **After loading:** Adjust the *Days* value and optionally customise the email text.
 
@@ -66,7 +77,7 @@ Sends a per-session reminder to all booked participants shortly before each indi
 
 **String ID:** `ruletemplatecourseupdate`
 
-Notifies all booked participants whenever a booking option is modified. Uses the `\{changes\}` placeholder to describe what changed.
+Notifies all booked participants whenever a booking option is modified. Uses the `{changes}` placeholder to describe what changed.
 
 | Setting | Pre-filled value |
 |---------|-----------------|
@@ -74,8 +85,8 @@ Notifies all booked participants whenever a booking option is modified. Uses the
 | **Event** | `bookingoption_updated` |
 | **Condition** | `select_student_in_bo` — status: Booked |
 | **Action** | `send_mail` |
-| **Subject** | Your booking "\{title\}" has changed |
-| **Body** | This is new: \<br\> \{changes\} \<br\> Click the following link to view the change(s) and an overview of all bookings: \{bookinglink\} |
+| **Subject** | Your booking "{title}" has changed |
+| **Body** | This is new: \<br\> {changes} \<br\> Click the following link to view the change(s) and an overview of all bookings: {bookinglink} |
 
 ---
 
@@ -92,7 +103,7 @@ Sends a booking confirmation email to a participant when their booking is confir
 | **Condition** | `select_user_from_event` — affected user |
 | **Action** | `send_mail` |
 | **Subject** | You have successfully booked |
-| **Body** | Dear \{firstname\} \{lastname\},\<br\>Thank you very much for your booking\<br\>\{bookingdetails\}\<br\>All the best! |
+| **Body** | Dear {firstname} {lastname},\<br\>Thank you very much for your booking\<br\>{bookingdetails}\<br\>All the best! |
 
 ---
 
@@ -109,7 +120,7 @@ Notifies a participant that they have been placed on the waiting list.
 | **Condition** | `select_user_from_event` — affected user |
 | **Action** | `send_mail` |
 | **Subject** | You are on the waiting list |
-| **Body** | Dear \{firstname\} \{lastname\},\<br\>You are on the waiting list\<br\>\{bookingdetails\}\<br\>All the best! |
+| **Body** | Dear {firstname} {lastname},\<br\>You are on the waiting list\<br\>{bookingdetails}\<br\>All the best! |
 
 ---
 
@@ -125,8 +136,8 @@ Sends a payment confirmation email after a user's payment for a booking is proce
 | **Event** | `bookingoption_booked` (or a shopping-cart payment event) |
 | **Condition** | `select_user_from_event` — affected user |
 | **Action** | `send_mail` |
-| **Subject** | Payment for \{Title\} confirmed |
-| **Body** | Thank you for your booking!\<br\>Your booking \{Title\} with the price: \{price\} has been successfully made.\<br\>Here is the confirmation link:\<br\>\{bookingconfirmationlink\}\<br\>Here is the course link:\<br\>\{courselink\}\<br\>Best regards |
+| **Subject** | Payment for {Title} confirmed |
+| **Body** | Thank you for your booking!\<br\>Your booking {Title} with the price: {price} has been successfully made.\<br\>Here is the confirmation link:\<br\>{bookingconfirmationlink}\<br\>Here is the course link:\<br\>{courselink}\<br\>Best regards |
 
 ---
 
@@ -143,7 +154,7 @@ Notifies participants when a booking option is marked as completed, and includes
 | **Condition** | `select_student_in_bo` — status: Booked |
 | **Action** | `send_mail` |
 | **Subject** | Bookingoption completed |
-| **Body** | You have completed the following booking option:\<br\>\{bookingdetails\}\<br\> Please participate in the Poll. Poll link: \{pollurl\} \<br\>To the course: \{courselink\}\<br\>View all booking options: \{bookinglink\} |
+| **Body** | You have completed the following booking option:\<br\>{bookingdetails}\<br\> Please participate in the Poll. Poll link: {pollurl} \<br\>To the course: {courselink}\<br\>View all booking options: {bookinglink} |
 
 ---
 
@@ -160,7 +171,7 @@ Notifies participants when the completion status of a booking option is reversed
 | **Condition** | `select_student_in_bo` — status: Booked |
 | **Action** | `send_mail` |
 | **Subject** | Completion undone |
-| **Body** | The completion of the following booking option has been undone:\<br\>\{bookingdetails\} |
+| **Body** | The completion of the following booking option has been undone:\<br\>{bookingdetails} |
 
 ---
 
@@ -176,8 +187,8 @@ Alerts the teachers of a booking option when the option is cancelled.
 | **Event** | `bookingoption_cancelled` |
 | **Condition** | `select_teacher_in_bo` |
 | **Action** | `send_mail` |
-| **Subject** | Cancellation of \{Title\} |
-| **Body** | Good day \{firstname\} \{lastname\},\<br\>unfortunately, the following event had to be cancelled:\<br\>\{bookingdetails\} |
+| **Subject** | Cancellation of {Title} |
+| **Body** | Good day {firstname} {lastname},\<br\>unfortunately, the following event had to be cancelled:\<br\>{bookingdetails} |
 
 ---
 

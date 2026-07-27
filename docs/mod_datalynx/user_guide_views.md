@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Datalynx User Guide — Views
@@ -33,9 +33,11 @@ A good view strategy usually includes:
 
 ## Available view types
 
+In Moodle 4.5+, Datalynx views use **progressive AJAX-based browse loading** powered by Mustache templates and Web Services. This allows you to page, filter, and sort entries dynamically without performing a full page reload, resulting in a much faster and smoother browsing experience.
+
 | View Type | Best used for | Typical audience |
 |---|---|---|
-| **Grid** | Card-style layout with visual grouping | Students, teachers |
+| **Grid** | Card-style layout with visual grouping and automatic grid column wrapping | Students, teachers |
 | **Tabular** | Row/column list for operational work | Teachers, managers |
 | **Report** | Structured reporting and export-oriented display | Managers, teachers |
 | **Csv** | Data extraction and CSV-centric workflows | Managers |
@@ -56,9 +58,20 @@ Even when exact labels vary by site configuration, most teams build three layout
 
 1. In **Views**, click **Add a view**.
 2. Select **Grid**.
-3. In your layout section, insert entry tags such as `[[Text]]` and `##comments##`.
-4. Add navigation components such as `##viewsmenu##` and `##pagingbar##`.
-5. Click **Save view** and test with sample entries.
+3. In **Grid settings**, select the appropriate **Entry wrapper** to configure how your cards are wrapped:
+   - **Bootstrap Grid Column (Recommended)**: Wraps entries in a responsive Bootstrap row-cols layout (`col`). The columns automatically match the parent row settings.
+   - **Columns per row**: Force format entries into 1, 2, 3, or 4 columns per row (e.g. `col-12`, `col-12 col-md-6`, etc.).
+   - **Legacy Datalynx wrapper (entry)**: Wraps each entry in the standard `entry` class div.
+   - **Custom CSS classes**: Specify custom space-separated CSS classes. If they contain `col-`, an outer row container is automatically generated.
+   - **No wrapper tag**: Omit wrapper elements completely for raw output rendering.
+4. Check the **Applied Grid Wrappers** infobox directly in the settings form to see the live HTML tag preview that will be generated for your view and entry templates.
+5. In your layout section, insert entry tags such as `[[Text]]` and `##comments##`. (Note: Since wrappers are automatically applied, you do not need to wrap your templates in Bootstrap rows/columns manually).
+6. Add navigation components such as `##viewsmenu##` and `##pagingbar##`.
+7. Click **Save view** and test with sample entries.
+
+> **Important Note on Obsolete Table-based Settings**  
+> The old table-based layout configurations (the **Cols** and **Rows** parameters that forced entries into HTML table markup) have been **completely removed**. The `##begintablecell##` tag is no longer supported and has been deprecated. Grid layouts are now fully responsive and rely on CSS/Bootstrap grid wrappers.
+
 
 ### How to build a List-style view
 
@@ -87,7 +100,7 @@ Even when exact labels vary by site configuration, most teams build three layout
 | `[[Text]]` | Prints a field value (example: entry title) |
 | `##entries##` | Renders the entry list/content block |
 | `##viewsmenu##` | Shows the view switch menu |
-| `##filtersmenu##` | Shows saved/custom filters |
+| `##filtersmenu##` | Shows the filter selector (limited to the view's permitted filters — see [Controlling which filters users can apply](#controlling-which-filters-users-can-apply)) |
 | `##quicksearch##` | Adds quick search input |
 | `##quickperpage##` | Adds entries-per-page selector |
 | `##pagingbar##` | Adds pagination controls |
@@ -128,11 +141,46 @@ Even when exact labels vary by site configuration, most teams build three layout
 | **View name** | Name shown in menu | Role + purpose (for example, “Teacher Review”) |
 | **Default view** | First view shown to users | Student-facing browse/submission view |
 | **Visible by** | Which roles can see this view | Restrict review/admin views |
+| **Default filter** | Filter applied when the view opens | Most restrictive filter for the audience |
+| **Permitted filters** | Extra filters users may switch to | Leave empty to lock; list a few for curated switching |
 | **Filter area** | Search/filter controls in layout | Enable for teacher/manager workflows |
 | **Paging controls** | Entries per page and navigation | Enable when entry volume grows |
 
 > **Warning**  
 > If a view is visible to learners and includes teacher-only actions or fields, sensitive workflow information may be exposed.
+
+---
+
+## Controlling which filters users can apply
+
+A view's **filter** decides which entries a user can see. For example, a student view can use a filter that only shows the entries the student authored, so controlling filters is an important part of keeping data private.
+
+Each view has three filter settings, shown when you edit the view:
+
+| Setting | What it does |
+|---|---|
+| **Default filter** | The filter applied when the view first opens. With no other settings, the view is locked to this filter and users cannot change it. |
+| **Permitted filters** | An optional list of *additional* filters users may switch to in view mode (using the `##filtersmenu##` dropdown or the `filter` URL parameter). Only the default filter and the filters you list here can be selected — any other filter is rejected and the default is applied instead. Leave empty to lock the view to the default filter. |
+| **Allow all filters** | When enabled, users can switch to *any* visible filter, including ones created later. This overrides the Permitted filters list. Use with care — it can expose entries you intended to hide. |
+
+> **Important Note**  
+> If you select one or more **Permitted filters**, you must also choose a **Default filter**. The default filter should be the most restrictive one, because it is what applies when no specific filter is requested.
+
+### How the filtering choices behave
+
+- **Locked view (default filter only):** Leave *Permitted filters* empty and *Allow all filters* off. The view always uses the default filter and no filter dropdown is shown. This is the safest setting for student-facing views.
+- **Curated switching:** Set a *Default filter* and add one or more *Permitted filters*. A filter dropdown appears listing only those filters, and users can switch between them. A request for any other filter falls back to the default.
+- **Open switching:** Enable *Allow all filters*. Users can pick any visible filter. The *Permitted filters* list is ignored while this is on.
+
+> **Pro-Tip**  
+> While a *Permitted filters* list is in force, personal (saved) filters and ad-hoc custom/advanced searches that would *replace* the base filter are blocked, so they cannot be used to widen what a user sees. Quick search and per-entry links still work — they only narrow the results further.
+
+### Upgrade note
+
+Existing views are unaffected. After upgrading:
+
+- Views that were already locked to a filter keep exactly the same behavior — they now list that one filter as both the **Default filter** and the single **Permitted filter**.
+- Views that previously allowed users to override the filter keep **Allow all filters** enabled and continue to allow switching to any filter.
 
 ---
 
@@ -157,6 +205,7 @@ Even when exact labels vary by site configuration, most teams build three layout
 | Users cannot switch views | `##viewsmenu##` not present or no permission | Add tag and verify role visibility |
 | Search box not visible | `##quicksearch##` not in template | Add and save template |
 | Teachers cannot find pending records | No review filter in view | Add filters and save a review-specific view |
+| Layout broken or cells not rendering properly | Legacy `##begintablecell##` tag or cols/rows used | Obsolete table-based layout settings were removed. Configure the new **Entry wrapper** in Grid settings to automatically generate Bootstrap row/columns wrappers instead. |
 
 ---
 

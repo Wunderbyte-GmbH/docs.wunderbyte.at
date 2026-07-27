@@ -7,6 +7,15 @@ The booking option form has two separate sections for people associated with an 
 
 ---
 
+## Quick setup path
+
+1. Open your booking activity: `/mod/booking/view.php?id=<cmid>`.
+2. Open option administration: `/mod/booking/editoptions.php?id=<cmid>`.
+3. Open the feature-specific page from this document and apply the settings.
+4. Save and verify with one test booking.
+
+---
+
 ## Table of Contents
 
 1. [Teachers](#1-teachers)
@@ -31,7 +40,7 @@ Use the **teacher search field** to find users by name or e-mail. You can assign
 
 ### Teachers and the connected Moodle course
 
-If the option is linked to a Moodle course (see [Linked Moodle course](06-moodle-course.md)), teachers can optionally be given a role in that course automatically.
+If the option is linked to a Moodle course (see [Linked Moodle course](./06-moodle-course.md)), teachers can optionally be given a role in that course automatically.
 
 ### Teachers in CSV import
 
@@ -75,6 +84,6 @@ Use the autocomplete search field to find users by name or e-mail. Multiple user
 
 ## Related pages
 
-- [Dates](02-dates.md) — Session dates that generate teacher calendar entries
-- [Linked Moodle course](06-moodle-course.md) — Teacher and contact roles in the course
+- [Dates](./02-dates.md) — Session dates that generate teacher calendar entries
+- [Linked Moodle course](./06-moodle-course.md) — Teacher and contact roles in the course
 - [CSV Import](../CSV_IMPORT_USER_GUIDE.md#8-teachers) — Bulk-assigning teachers

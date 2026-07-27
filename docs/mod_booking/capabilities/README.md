@@ -4,6 +4,15 @@ Moodle capabilities define what each role is allowed to do inside **mod_booking*
 
 ---
 
+## Quick setup path
+
+1. Open role permissions in Site administration.
+2. Search for booking capabilities listed on this page.
+3. Assign only required capabilities to target roles.
+4. Verify with a test user account.
+
+---
+
 ## Table of Contents
 
 1. [How capabilities work in mod_booking](#1-how-capabilities-work-in-mod_booking)
