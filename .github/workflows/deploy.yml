@@ -15,7 +15,6 @@ concurrency:
 
 jobs:
   deploy:
-    if: ${{ secrets.WUNDERBYTE_SFTP_PASSWORD != '' }}
     runs-on: ubuntu-latest
 
     env:
@@ -26,6 +25,15 @@ jobs:
       SFTP_PASSWORD: ${{ secrets.WUNDERBYTE_SFTP_PASSWORD }}
 
     steps:
+      # The `secrets` context is not available in a job-level `if`, so the check
+      # lives here: without it the whole workflow failed to start.
+      - name: Check deployment credentials
+        run: |
+          if [ -z "${SFTP_PASSWORD}" ]; then
+            echo "::error::Repository secret WUNDERBYTE_SFTP_PASSWORD is not set — the site cannot be deployed." >&2
+            exit 1
+          fi
+
       - name: Check out repository
         uses: actions/checkout@v4
 
